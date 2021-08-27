@@ -12,7 +12,7 @@ class E2XFileCheckpoints(FileCheckpoints):
     number_of_checkpoints = Integer(5, config=True)
 
     def make_checkpoint(self, contents_mgr, path):
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         checkpoint_id = "checkpoint-" + timestamp
         src_path = contents_mgr._get_os_path(path)
         dest_path = self.checkpoint_path(checkpoint_id, path)
