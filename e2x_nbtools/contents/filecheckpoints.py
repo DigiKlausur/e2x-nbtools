@@ -16,7 +16,6 @@ class E2XFileCheckpoints(FileCheckpoints):
         checkpoint_id = "checkpoint-" + timestamp
         src_path = contents_mgr._get_os_path(path)
         dest_path = self.checkpoint_path(checkpoint_id, path)
-        print("Saving at", dest_path)
         self._copy(src_path, dest_path)
         return self.checkpoint_model(checkpoint_id, dest_path)
 
@@ -26,8 +25,6 @@ class E2XFileCheckpoints(FileCheckpoints):
             return self.make_checkpoint(contents_mgr, path)
         res = self.make_checkpoint(contents_mgr, path)
         checkpoints = self.list_checkpoints(path)[self.number_of_checkpoints :]
-        print("To delete")
-        print(checkpoints)
         for checkpoint in checkpoints:
             self.delete_checkpoint(checkpoint["id"], path)
         return res
