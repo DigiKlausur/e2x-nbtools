@@ -25,7 +25,7 @@ class E2XFileCheckpoints(FileCheckpoints):
         if len(checkpoints) < self.number_of_checkpoints:
             return self.make_checkpoint(contents_mgr, path)
         res = self.make_checkpoint(contents_mgr, path)
-        checkpoints = self.list_checkpoints(path)[self.number_of_checkpoints :]
+        checkpoints = self.list_checkpoints(path)[self.number_of_checkpoints:]
         print("To delete")
         print(checkpoints)
         for checkpoint in checkpoints:
