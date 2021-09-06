@@ -1,4 +1,10 @@
 # e2x-nbtools
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DigiKlausur_e2x-nbtools&metric=alert_status)](https://sonarcloud.io/dashboard?id=DigiKlausur_e2x-nbtools)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DigiKlausur_e2x-nbtools&metric=coverage)](https://sonarcloud.io/dashboard?id=DigiKlausur_e2x-nbtools)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 Tools for customizing jupyter notebook
 
 ## 1. Multiple checkpoints for jupyter notebook
