@@ -19,11 +19,11 @@ class TestE2XFileCheckpoints(unittest.TestCase):
         self.contents_mgr.checkpoints.root_dir = self.tmp_dir.name
 
     def createNotebook(self):
-        return self.contents_mgr.new_untitled(path='', ext=".ipynb")
+        return self.contents_mgr.new_untitled(path="", ext=".ipynb")
 
     def testListCheckpoints(self):
         self.contents_mgr.checkpoint_class.number_of_checkpoints = 2
-        path = self.createNotebook()['path']
+        path = self.createNotebook()["path"]
         time.sleep(1)
         assert len(self.contents_mgr.list_checkpoints(path)) == 1
         time.sleep(2)
@@ -35,16 +35,15 @@ class TestE2XFileCheckpoints(unittest.TestCase):
 
     def testRemoveCheckpoints(self):
         self.contents_mgr.checkpoint_class.number_of_checkpoints = 2
-        path = self.createNotebook()['path']
+        path = self.createNotebook()["path"]
         time.sleep(1)
         assert len(self.contents_mgr.list_checkpoints(path)) == 1
         time.sleep(2)
         self.contents_mgr.create_checkpoint(path)
         assert len(self.contents_mgr.list_checkpoints(path)) == 2
         checkpoints = self.contents_mgr.list_checkpoints(path)
-        self.contents_mgr.delete_checkpoint(checkpoints[0]['id'], path)
+        self.contents_mgr.delete_checkpoint(checkpoints[0]["id"], path)
         assert len(self.contents_mgr.list_checkpoints(path)) == 1
 
     def tearDown(self):
         self.tmp_dir.cleanup()
-

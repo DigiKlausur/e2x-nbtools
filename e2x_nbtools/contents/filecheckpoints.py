@@ -47,9 +47,9 @@ class E2XFileCheckpoints(FileCheckpoints):
         )
 
     def find_checkpoint_ids(self, path):
-        path = path.strip('/')
-        parent, name = ('/' + path).rsplit('/', 1)
-        parent = parent.strip('/')
+        path = path.strip("/")
+        parent, name = ("/" + path).rsplit("/", 1)
+        parent = parent.strip("/")
         basename, ext = os.path.splitext(name)
         os_path = self._get_os_path(path=parent)
 
