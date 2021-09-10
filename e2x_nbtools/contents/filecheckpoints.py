@@ -53,7 +53,6 @@ class E2XFileCheckpoints(FileCheckpoints):
         basename, ext = os.path.splitext(name)
         os_path = self._get_os_path(path=parent)
 
-        path = os.path.join(self.checkpoint_dir, name)
         cp_dir = os.path.join(os_path, self.checkpoint_dir)
         pattern = f"{os.path.join(cp_dir, basename)}-checkpoint*.ipynb"
         checkpoints = [
