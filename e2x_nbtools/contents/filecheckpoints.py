@@ -34,7 +34,7 @@ class E2XFileCheckpoints(FileCheckpoints):
         This contents manager currently only supports one checkpoint per file.
         """
         path = path.strip("/")
-        checkpoint_ids = self.find_checkpoint_ids(os.path.splitext(path)[0])
+        checkpoint_ids = self.find_checkpoint_ids(path)
 
         return sorted(
             [
@@ -46,14 +46,21 @@ class E2XFileCheckpoints(FileCheckpoints):
             reverse=True,
         )
 
-    def find_checkpoint_ids(self, nb_name):
-        path = os.path.join(self.checkpoint_dir, nb_name)
-        pattern = f"{path}-checkpoint*.ipynb"
+    def find_checkpoint_ids(self, path):
+        path = path.strip('/')
+        parent, name = ('/' + path).rsplit('/', 1)
+        parent = parent.strip('/')
+        basename, ext = os.path.splitext(name)
+        os_path = self._get_os_path(path=parent)
+
+        path = os.path.join(self.checkpoint_dir, name)
+        cp_dir = os.path.join(os_path, self.checkpoint_dir)
+        pattern = f"{os.path.join(cp_dir, basename)}-checkpoint*.ipynb"
         checkpoints = [
             os.path.splitext(os.path.basename(path))[0] for path in glob.glob(pattern)
         ]
         ids = [
-            re.search(f"{nb_name}-(.*)", checkpoint).groups()[0]
+            re.search(f"{basename}-(.*)", checkpoint).groups()[0]
             for checkpoint in checkpoints
         ]
         return ids
